@@ -26,6 +26,8 @@ namespace back_abcash.Models.Entities
         [MinLength(8)]
         public String Password { get; set; }
         public Boolean Statut { get; set; }
+        [Required]
+        public int RoleId { get; set; }
         public User()
         {
             this.Statut = true;
