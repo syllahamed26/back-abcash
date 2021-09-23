@@ -140,5 +140,14 @@ namespace back_abcash.Controllers
         {
             return _context.Caisses.Any(e => e.Id == id);
         }
+
+        public static string RandomCode(int length)
+        {
+            string allowed = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            return new string(allowed
+            .OrderBy(o => Guid.NewGuid())
+            .Take(length)
+            .ToArray());
+        }
     }
 }
