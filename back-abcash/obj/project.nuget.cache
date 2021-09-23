@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VqEdWtPV3RqJQlgGFdsudEzt3FMLnXq2feqYyH6gJL2+sN9V/7aegit5uOasZegrQO0Qu+PXNWxHQZw0XzxcxA==",
+  "dgSpecHash": "Y5kXCgLFe5jNF4/We8NvytmsMucwwpaKaePLgZJwIzaGme+KVolfKkRMttd/tqo6Me5b3d4g+oBiPqyIPjjeyg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hamed SYLLA\\Documents\\Projects\\Back\\back-abcash\\back-abcash\\back-abcash.csproj",
   "expectedPackageFiles": [
@@ -59,10 +59,10 @@
     "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\oracle.entityframeworkcore\\5.21.3\\oracle.entityframeworkcore.5.21.3.nupkg.sha512",
     "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\oracle.manageddataaccess.core\\3.21.3\\oracle.manageddataaccess.core.3.21.3.nupkg.sha512",
     "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
-    "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
-    "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
-    "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
-    "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
+    "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.2\\swashbuckle.aspnetcore.6.2.2.nupkg.sha512",
+    "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.2\\swashbuckle.aspnetcore.swagger.6.2.2.nupkg.sha512",
+    "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.2\\swashbuckle.aspnetcore.swaggergen.6.2.2.nupkg.sha512",
+    "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.2\\swashbuckle.aspnetcore.swaggerui.6.2.2.nupkg.sha512",
     "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
     "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",

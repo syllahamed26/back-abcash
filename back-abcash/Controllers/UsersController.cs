@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using back_abcash.Models;
 using back_abcash.Models.Entities;
+using back_abcash.Dto;
 
 namespace back_abcash.Controllers
 {
@@ -143,7 +144,37 @@ namespace back_abcash.Controllers
             return Ok(user);
         }
 
-        
+        [Route("login")]
+        [HttpPost]
+        public async Task<ActionResult<User>> Login(DtoUserLogin dtoUserLogin)
+        {
+            if (dtoUserLogin.Login == String.Empty || dtoUserLogin.Password == string.Empty)
+            {
+                return NotFound("Champs login et mot de passe requis");
+            }
+
+            var userFind = from u in _context.Users
+                           where u.Login == dtoUserLogin.Login
+                           select new { u.Id, u.Password, u.Statut };
+
+            if (userFind.Count() == 0)
+            {
+                return NotFound("Données incorrectes");
+            }
+            else if (!userFind.First().Statut) //vérification du statut
+            {
+                return NotFound("Compte inactif, contactez l'administrateur");
+            }
+            else if (dtoUserLogin.Password != userFind.First().Password) //verification du password
+            {
+                return NotFound("Données incorrectes");
+            }
+
+            //recherche de id contenu dans userFind
+            var user = await _context.Users.FindAsync(userFind.First().Id);
+
+            return Ok(user);
+        }
 
         private bool UserExists(int id)
         {
