@@ -143,36 +143,7 @@ namespace back_abcash.Controllers
             return Ok(user);
         }
 
-        [Route("login")]
-        public async Task<ActionResult<User>> Login(string login, string password)
-        {
-            if (login == String.Empty || password == string.Empty)
-            {
-                return NotFound("Champs login et mot de passe requis");             
-            }
-
-            var userFind = from u in _context.Users 
-                           where u.Login == login 
-                           select new { u.Id, u.Password, u.Statut };
-
-            if(userFind.Count() == 0)
-            {
-                return NotFound("Données incorrectes");
-            }
-            else if (!userFind.First().Statut) //vérification du statut
-            {
-                return NotFound("Compte inactif, contactez l'administrateur");
-            }
-            else if (password != userFind.First().Password) //verification du password
-            {
-                return NotFound("Données incorrectes");
-            }
-
-            //recherche de id contenu dans userFind
-            var user = await _context.Users.FindAsync(userFind.First().Id);
-
-            return Ok(user);
-        }
+        
 
         private bool UserExists(int id)
         {

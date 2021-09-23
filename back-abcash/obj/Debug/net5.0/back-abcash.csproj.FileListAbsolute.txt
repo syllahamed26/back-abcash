@@ -138,3 +138,8 @@ C:\Users\Hamed SYLLA\Documents\Projects\Back\back-abcash\back-abcash\bin\Debug\n
 C:\Users\Hamed SYLLA\Documents\Projects\Back\back-abcash\back-abcash\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Hamed SYLLA\Documents\Projects\Back\back-abcash\back-abcash\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Hamed SYLLA\Documents\Projects\Back\back-abcash\back-abcash\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Hamed SYLLA\Documents\Projects\Back\back-abcash\back-abcash\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\Hamed SYLLA\Documents\Projects\Back\back-abcash\back-abcash\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Hamed SYLLA\Documents\Projects\Back\back-abcash\back-abcash\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Hamed SYLLA\Documents\Projects\Back\back-abcash\back-abcash\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Hamed SYLLA\Documents\Projects\Back\back-abcash\back-abcash\obj\Debug\net5.0\back-abcash.MvcApplicationPartsAssemblyInfo.cs

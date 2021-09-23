@@ -29,6 +29,8 @@ namespace back_abcash
         {
             services.AddControllers();
             services.AddDbContext<AbcashDbContext>(o => o.UseOracle(Configuration.GetConnectionString("DbConnexion")));
+
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +51,16 @@ namespace back_abcash
             {
                 endpoints.MapControllers();
             });
+
+            
+            app.UseSwagger();
+            
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = String.Empty;
+            }
+            );
         }
     }
 }
