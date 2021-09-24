@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hamed SYLLA\\Documents\\Projects\\Back\\back-abcash\\back-abcash\\back-abcash.csproj": {}
+    "D:\\ABCASH\\back-abcash\\back-abcash\\back-abcash.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hamed SYLLA\\Documents\\Projects\\Back\\back-abcash\\back-abcash\\back-abcash.csproj": {
+    "D:\\ABCASH\\back-abcash\\back-abcash\\back-abcash.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hamed SYLLA\\Documents\\Projects\\Back\\back-abcash\\back-abcash\\back-abcash.csproj",
+        "projectUniqueName": "D:\\ABCASH\\back-abcash\\back-abcash\\back-abcash.csproj",
         "projectName": "back-abcash",
-        "projectPath": "C:\\Users\\Hamed SYLLA\\Documents\\Projects\\Back\\back-abcash\\back-abcash\\back-abcash.csproj",
-        "packagesPath": "C:\\Users\\Hamed SYLLA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hamed SYLLA\\Documents\\Projects\\Back\\back-abcash\\back-abcash\\obj\\",
+        "projectPath": "D:\\ABCASH\\back-abcash\\back-abcash\\back-abcash.csproj",
+        "packagesPath": "C:\\Users\\EBURTIS-YBO\\.nuget\\packages\\",
+        "outputPath": "D:\\ABCASH\\back-abcash\\back-abcash\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Hamed SYLLA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\EBURTIS-YBO\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

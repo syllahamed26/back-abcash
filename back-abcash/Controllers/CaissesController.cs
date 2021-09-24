@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using back_abcash.Models;
 using back_abcash.Models.Entities;
+using back_abcash.Repositories;
+using back_abcash.Contrats;
 
 namespace back_abcash.Controllers
 {
@@ -14,30 +16,32 @@ namespace back_abcash.Controllers
     [ApiController]
     public class CaissesController : ControllerBase
     {
-        private readonly AbcashDbContext _context;
+        private readonly ICaisseRepository _caisserepo;
 
-        public CaissesController(AbcashDbContext context)
-        {
-            _context = context;
-        }
+        public CaissesController(ICaisseRepository caisseReository) => _caisserepo = caisseReository;
 
         // GET: api/Caisses
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Caisse>>> GetCaisses()
         {
-            return await _context.Caisses.ToListAsync();
+            var res = await _caisserepo.GetAll();
+            return Ok(res);
         }
 
         // GET: api/Caisses/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Caisse>> GetCaisse(int id)
         {
-            var caisse = await _context.Caisses.FindAsync(id);
+            var caisse = await _caisserepo.GetById(id);
 
+<<<<<<< HEAD
+            if (caisse == null) return BadRequest("Contract does not exist");
+=======
             if (caisse == null)
             {
                 return BadRequest(new { code = "404", message = "caisse inexistante" });
             }
+>>>>>>> 09fda35a6832292fab8197587b9008ce93303797
 
             return caisse;
         }
@@ -47,13 +51,15 @@ namespace back_abcash.Controllers
         [HttpPost("{id}")]
         public async Task<IActionResult> PutCaisse(int id, Caisse data)
         {
-            var caisse = await _context.Caisses.FindAsync(id);
+            var caisse = await _caisserepo.GetById(id);
 
             if (caisse == null)
             {
                 return BadRequest(new { code = "404", message = "caisse inexistante" });
             }
 
+<<<<<<< HEAD
+=======
             var CheckLibelle = from c in _context.Caisses
                                where c.Libelle == caisse.Libelle && c.Id != id
                                select new { c.Id };
@@ -65,11 +71,13 @@ namespace back_abcash.Controllers
 
             _context.Entry(caisse).State = EntityState.Modified;
 
+>>>>>>> 09fda35a6832292fab8197587b9008ce93303797
             caisse.Libelle = data.Libelle;
             caisse.Emplacement = data.Emplacement;
             caisse.UpdatedAt = DateTime.Now;
 
-            await _context.SaveChangesAsync();
+            _caisserepo.Update(caisse);
+            if (_caisserepo.Complete() < 0) return BadRequest("An Unexpected error happen");
 
             return Ok(caisse);
 
@@ -80,17 +88,15 @@ namespace back_abcash.Controllers
         [HttpPost]
         public async Task<ActionResult<Caisse>> PostCaisse(Caisse caisse)
         {
-            var CheckLibelle = from c in _context.Caisses
-                               where c.Libelle == caisse.Libelle
-                               select new { c.Id };
+            var res = await _caisserepo.GetCaisseByLibelle(caisse.Libelle);
 
-            if (CheckLibelle.Count() > 0)
+            if (res.Count() > 0)
             {
                 return BadRequest(new { code = "400", message = "libellé déja utilisé" });
             }
 
-            _context.Caisses.Add(caisse);
-            await _context.SaveChangesAsync();
+            await _caisserepo.Insert(caisse);
+            if (_caisserepo.Complete() < 0) return BadRequest("An Unexpected error happen");
 
             return CreatedAtAction("GetCaisse", new { id = caisse.Id }, caisse);
         }
@@ -98,7 +104,7 @@ namespace back_abcash.Controllers
         [HttpGet("enordis/{id}")]
         public async Task<ActionResult> EnableOrDisable(int id)
         {
-            var caisse = await _context.Caisses.FindAsync(id);
+            var caisse = await _caisserepo.GetById(id);
 
             if (caisse == null)
             {
@@ -114,7 +120,8 @@ namespace back_abcash.Controllers
                 caisse.Statut = true;
             }
 
-            await _context.SaveChangesAsync();
+             _caisserepo.Update(caisse);
+            if (_caisserepo.Complete() < 0) return BadRequest("An Unexpected error happen");
 
             return Ok(caisse);
         }
@@ -123,18 +130,26 @@ namespace back_abcash.Controllers
         [HttpGet("delete/{id}")]
         public async Task<IActionResult> DeleteCaisse(int id)
         {
-            var caisse = await _context.Caisses.FindAsync(id);
+            var caisse = await _caisserepo.GetById(id);
 
             if (caisse == null)
             {
                 return BadRequest(new { code = "404", message = "caisse inexistante" });
             }
 
-            _context.Caisses.Remove(caisse);
-            await _context.SaveChangesAsync();
+            _caisserepo.Delete(id);
+            if (_caisserepo.Complete() < 0) return BadRequest("An Unexpected error happen");
 
             return Ok(new { code = "200", message = "suppression effectuée" });
         }
 
+<<<<<<< HEAD
+        private async Task<ActionResult> CaisseExists(int id)
+        {
+            var res = await _caisserepo.ExistingCaisse(id);
+            return Ok(res);
+        }
+=======
+>>>>>>> 09fda35a6832292fab8197587b9008ce93303797
     }
 }
