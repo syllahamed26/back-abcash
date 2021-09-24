@@ -30,7 +30,7 @@ namespace back_abcash.Controllers
 
             if (verifAffect.Count() >0)
             {
-                return BadRequest();
+                return BadRequest(new { code = "400", message = "utilisateur déja affecté à la caisse" });
             }
 
             userCaisse.DateAffectation = DateTime.Now;
@@ -46,13 +46,13 @@ namespace back_abcash.Controllers
             var affec = await _context.UsersCaisses.FindAsync(id);
             if (affec == null)
             {
-                return NotFound();
+                return BadRequest(new { code = "404", message = "affectation inexistante" });
             }
 
             _context.UsersCaisses.Remove(affec);
             await _context.SaveChangesAsync();
 
-            return Ok("Suppression effectuée");
+            return Ok(new { code = "200", message = "suppression effectuée" });
         }
 
         [HttpGet("users/{id}")]
@@ -61,7 +61,7 @@ namespace back_abcash.Controllers
             var userCheck = await _context.Users.FindAsync(id);
             if (userCheck == null)
             {
-                return NotFound();
+                return BadRequest(new { code = "404", message = "user introuvable" });
             }
 
             var listecaisse = from u in _context.Users
@@ -80,7 +80,7 @@ namespace back_abcash.Controllers
             var caisseCheck = await _context.Caisses.FindAsync(id);
             if (caisseCheck == null)
             {
-                return NotFound();
+                return BadRequest(new { code = "404", message = "caisse inexistante" });
             }
 
             var listeuser = from u in _context.Users

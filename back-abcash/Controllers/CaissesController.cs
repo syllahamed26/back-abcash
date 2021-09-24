@@ -36,7 +36,7 @@ namespace back_abcash.Controllers
 
             if (caisse == null)
             {
-                return NotFound();
+                return BadRequest(new { code = "404", message = "caisse inexistante" });
             }
 
             return caisse;
@@ -51,7 +51,7 @@ namespace back_abcash.Controllers
 
             if (caisse == null)
             {
-                return NotFound();
+                return BadRequest(new { code = "404", message = "caisse inexistante" });
             }
 
             var CheckLibelle = from c in _context.Caisses
@@ -60,7 +60,7 @@ namespace back_abcash.Controllers
 
             if (CheckLibelle.Count() > 0)
             {
-                return NotFound();
+                return BadRequest(new { code = "400", message = "libelle déja utilisé" });
             }
 
             _context.Entry(caisse).State = EntityState.Modified;
@@ -86,7 +86,7 @@ namespace back_abcash.Controllers
 
             if (CheckLibelle.Count() > 0)
             {
-                return NotFound();
+                return BadRequest(new { code = "400", message = "libellé déja utilisé" });
             }
 
             _context.Caisses.Add(caisse);
@@ -102,7 +102,7 @@ namespace back_abcash.Controllers
 
             if (caisse == null)
             {
-                return NotFound();
+                return BadRequest(new { code = "404", message = "caisse inexistante" });
             }
 
             if (caisse.Statut)
@@ -127,27 +127,14 @@ namespace back_abcash.Controllers
 
             if (caisse == null)
             {
-                return NotFound();
+                return BadRequest(new { code = "404", message = "caisse inexistante" });
             }
 
             _context.Caisses.Remove(caisse);
             await _context.SaveChangesAsync();
 
-            return Ok("Suppression effectuée");
+            return Ok(new { code = "200", message = "suppression effectuée" });
         }
 
-        private bool CaisseExists(int id)
-        {
-            return _context.Caisses.Any(e => e.Id == id);
-        }
-
-        public static string RandomCode(int length)
-        {
-            string allowed = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-            return new string(allowed
-            .OrderBy(o => Guid.NewGuid())
-            .Take(length)
-            .ToArray());
-        }
     }
 }
