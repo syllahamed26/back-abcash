@@ -36,10 +36,10 @@ namespace back_abcash.Controllers
 
             if (role == null)
             {
-                return NotFound();
+                return BadRequest(new { code = "404", message = "role introuvable" });
             }
 
-            return role;
+            return Ok(role);
         }
 
         // PUT: api/Roles/5
@@ -51,7 +51,7 @@ namespace back_abcash.Controllers
 
             if(role == null)
             {
-                return NotFound();
+                return BadRequest(new { code = "404", message = "role introuvable" });
             }
 
             role.Libelle = data.Libelle;
@@ -79,18 +79,13 @@ namespace back_abcash.Controllers
             var role = await _context.Roles.FindAsync(id);
             if (role == null)
             {
-                return NotFound();
+                return BadRequest(new { code = "404", message = "role introuvable" });
             }
 
             _context.Roles.Remove(role);
             await _context.SaveChangesAsync();
 
-            return Ok("Suppression effectuée");
-        }
-
-        private bool RoleExists(int id)
-        {
-            return _context.Roles.Any(e => e.Id == id);
+            return Ok(new { code = "200", message = "suppression éffectuée" });
         }
     }
 }

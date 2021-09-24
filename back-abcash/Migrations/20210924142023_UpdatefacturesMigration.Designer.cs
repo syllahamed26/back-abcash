@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 using back_abcash.Models;
@@ -9,9 +10,10 @@ using back_abcash.Models;
 namespace back_abcash.Migrations
 {
     [DbContext(typeof(AbcashDbContext))]
-    partial class AbcashDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210924142023_UpdatefacturesMigration")]
+    partial class UpdatefacturesMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

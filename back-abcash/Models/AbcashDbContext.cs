@@ -14,6 +14,7 @@ namespace back_abcash.Models
         public DbSet<Caisse> Caisses { get; set; }
         public DbSet<UserCaisse> UsersCaisses { get; set; }
         public DbSet<Session> Sessions { get; set; }
+        public DbSet<Facture> Factures { get; set; }
         public AbcashDbContext(DbContextOptions<AbcashDbContext> options) : base(options)
         {
 

@@ -37,7 +37,7 @@ namespace back_abcash.Controllers
 
             if (user == null)
             {
-                return NotFound();
+                return BadRequest(new { code = "404", message = "user introuvable" });
             }
 
             return user;
@@ -56,11 +56,11 @@ namespace back_abcash.Controllers
 
             if (user == null)
             {
-                return NotFound();
+                return BadRequest(new { code = "404", message = "user introuvable" });
             }
             else if (verifLogin.Count() > 0)
             {
-                return NotFound("Login existant");
+                return BadRequest(new { code = "404", message = "login déja existant" });
             }
 
             _context.Entry(user).State = EntityState.Modified;
@@ -89,11 +89,11 @@ namespace back_abcash.Controllers
                              select new { u.Id, u.Login };
             if (VerifRole == null)
             {
-                return NotFound("Rôle inexistant");
+                return BadRequest(new { code = "404", message = "rôle introuvable" });
             }
             else if (verifLogin.Count() > 0)
             {
-                return NotFound("Login existant");
+                return BadRequest(new { code = "404", message = "login déja existant" });
             }
 
             _context.Users.Add(user);
@@ -115,7 +115,7 @@ namespace back_abcash.Controllers
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
-            return Ok("Suppression éffectuée");
+            return Ok(new { code = "404", message = "suppression éffectuée" });
         }
 
         [HttpGet("enordis/{id}")]
@@ -125,7 +125,7 @@ namespace back_abcash.Controllers
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
-                return NotFound();
+                return BadRequest(new { code = "404", message = "user introuvable" });
             }
 
             _context.Entry(user).State = EntityState.Modified;
@@ -150,7 +150,7 @@ namespace back_abcash.Controllers
         {
             if (dtoUserLogin.Login == String.Empty || dtoUserLogin.Password == string.Empty)
             {
-                return NotFound("Champs login et mot de passe requis");
+                return BadRequest(new { code = "404", message = "Champs login et mot de passe requis" });
             }
 
             var userFind = from u in _context.Users
@@ -159,26 +159,21 @@ namespace back_abcash.Controllers
 
             if (userFind.Count() == 0)
             {
-                return NotFound("Données incorrectes");
+                return BadRequest(new { code = "404", message = "données incorrectes" });
             }
             else if (!userFind.First().Statut) //vérification du statut
             {
-                return NotFound("Compte inactif, contactez l'administrateur");
+                return BadRequest(new { code = "404", message = "Compte inactif, contactez l'administrateur" });
             }
             else if (dtoUserLogin.Password != userFind.First().Password) //verification du password
             {
-                return NotFound("Données incorrectes");
+                return BadRequest(new { code = "404", message = "données incorrectes" });
             }
 
             //recherche de id contenu dans userFind
             var user = await _context.Users.FindAsync(userFind.First().Id);
 
             return Ok(user);
-        }
-
-        private bool UserExists(int id)
-        {
-            return _context.Users.Any(e => e.Id == id);
         }
     }
 }

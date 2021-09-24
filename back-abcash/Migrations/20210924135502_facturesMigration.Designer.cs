@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 using back_abcash.Models;
@@ -9,9 +10,10 @@ using back_abcash.Models;
 namespace back_abcash.Migrations
 {
     [DbContext(typeof(AbcashDbContext))]
-    partial class AbcashDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210924135502_facturesMigration")]
+    partial class facturesMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,9 +72,8 @@ namespace back_abcash.Migrations
                     b.Property<DateTime>("Debut")
                         .HasColumnType("TIMESTAMP(7)");
 
-                    b.Property<string>("Etat")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR2(1)");
+                    b.Property<bool>("Etat")
+                        .HasColumnType("NUMBER(1)");
 
                     b.Property<DateTime>("Fin")
                         .HasColumnType("TIMESTAMP(7)");
